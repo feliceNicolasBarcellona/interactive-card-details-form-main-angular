@@ -33,7 +33,7 @@ main {
 }
 
 .front {
-  background-image: url("../assets/bg-card-front.png");
+  background-image: url("^assets/bg-card-front.png");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% 100%;
@@ -59,7 +59,7 @@ main {
 }
 
 .back {
-  background-image: url("../assets/bg-card-back.png");
+  background-image: url("^assets/bg-card-back.png");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% 100%;
