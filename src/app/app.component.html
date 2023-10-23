@@ -3,14 +3,23 @@
     <div class="card-container">
       <div class="card front">
         <img src="assets/card-logo.svg" alt="card-logo" />
-        <p class="card-number">0000 0000 0000 0000</p>
+        <p class="card-number" *ngIf="creditCard.value.cardNumber">{{creditCard.value.cardNumber}}</p>
+        <p class="card-number" *ngIf="!creditCard.value.cardNumber">0000 0000 0000 0000</p>
         <div class="name-exp">
-          <p>Jane Appleseed</p>
-          <div><span>00</span><span>/</span><span>00</span></div>
+          <p *ngIf="creditCard.value.cardholderName">{{creditCard.value.cardholderName}}</p>
+          <p *ngIf="!creditCard.value.cardholderName">Jane Appleseed</p>
+          <div>
+            <span *ngIf="creditCard.value.month">{{creditCard.value.month}}</span>
+            <span *ngIf="!creditCard.value.month">00</span>
+            <span>/</span>
+            <span *ngIf="creditCard.value.year">{{creditCard.value.year}}</span>
+            <span *ngIf="!creditCard.value.year">00</span>
+          </div>
         </div>
       </div>
       <div class="card back">
-        <p class="cvc-number">000</p>
+        <p class="cvc-number" *ngIf="creditCard.value.cvc">{{ creditCard.value.cvc }}</p>
+        <p class="cvc-number" *ngIf="!creditCard.value.cvc">000</p>
       </div>
     </div>
     <div class="form-container">
@@ -80,6 +89,7 @@
                 formControlName="month"
                 type="text"
                 placeholder="MM"
+                [maxlength]="2"
               />
               <label for="year"></label>
               <input
@@ -87,6 +97,7 @@
                 formControlName="year"
                 type="text"
                 placeholder="YY"
+                [maxlength]="2"
               />
             </div>
             <div
@@ -118,6 +129,7 @@
               formControlName="cvc"
               type="text"
               placeholder="e.g. 123"
+              [maxlength]="3"
             />
             <div
               *ngIf="
