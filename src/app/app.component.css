@@ -76,6 +76,102 @@ main {
   right: 57px;
 }
 
+.form-container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 0 49px;
+}
+
+form {
+  width: 383px;
+  height: 353px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 26px;
+  width: 100%;
+}
+
+.form-control label {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 7px;
+  color: var(--very-dark-violet);
+}
+
+.form-control input {
+  padding: 12px 12px 11px 12px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--light-grayish-violet);
+  color: var(--very-dark-violet);
+  font-size: 16.3px;
+  text-indent: 3px;
+  letter-spacing: 1px;
+  font-family: "Space Grotesk", sans-serif;
+  cursor: pointer;
+  margin-right: 11px;
+}
+
+input::placeholder {
+  color: hsla(279, 6%, 55%, 0.5);
+}
+
+.form-control input:focus {
+  outline: none;
+  padding: 12px 12px 11.5px 12px;
+  border: double 1px transparent;
+  border-radius: 8px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(rgb(101, 74, 252), rgb(95, 5, 148));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.form-control input.ng-invalid.ng-touched {
+  outline: 1px solid var(--red-input-errors);
+  outline-offset: -1px;
+}
+
+.error-message {
+  font-size: 12px;
+  margin: 9px 0 0 0px;
+  color: var(--red-input-errors);
+}
+
+.form-group {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  border: none;
+  width: 100%;
+  height: 53px;
+  background-color: var(--very-dark-violet);
+  color: var(--white);
+  font-family: "Space Grotesk", sans-serif;
+  margin-top: 15px;
+  border-radius: 8px;
+  font-size: 16.5px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.month-year-container {
+  display: flex;
+  width: 183px;
+  justify-content: space-between;
+}
+
 @media only screen and (max-width: 1024px) {
   main {
     max-width: 375px;
@@ -88,13 +184,14 @@ main {
     height: 100%;
     width: 100%;
     padding: 0 15px;
+    display: flex;
+    flex-direction: column;
   }
 
   .card-container {
     width: 100%;
     height: 31%;
     flex-direction: column-reverse;
-    border: 1px dashed darkred;
     padding: 30px 0 0 0;
   }
 
@@ -132,5 +229,29 @@ main {
     top: 45%;
     right: 37px;
     letter-spacing: 1.5px;
+  }
+
+  .form-container {
+    width: 100%;
+    height: 69%;
+    padding: 46px 10px 0;
+    align-items: flex-start;
+  }
+
+  form {
+    width: 100%;
+    height: auto;
+  }
+
+  .form-control {
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    margin-top: 7px;
+  }
+
+  .month-year-container {
+    width: 163px;
   }
 }

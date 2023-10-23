@@ -2,22 +2,147 @@
   <section class="wrapper">
     <div class="card-container">
       <div class="card front">
-        <img src="assets/card-logo.svg" alt="card-logo">
-        <p class="card-number">
-          0000 0000 0000 0000
-        </p>
+        <img src="assets/card-logo.svg" alt="card-logo" />
+        <p class="card-number">0000 0000 0000 0000</p>
         <div class="name-exp">
           <p>Jane Appleseed</p>
-          <div>
-            <span>00</span><span>/</span><span>00</span>
-          </div>
+          <div><span>00</span><span>/</span><span>00</span></div>
         </div>
       </div>
       <div class="card back">
         <p class="cvc-number">000</p>
       </div>
     </div>
-    <div class="form-container"></div>
+    <div class="form-container">
+      <form [formGroup]="creditCard" (ngSubmit)="onSubmit()" *ngIf="!submitted">
+        <div class="form-control">
+          <label for="cardholderName">Cardholder Name</label>
+          <input
+            id="cardholderName"
+            formControlName="cardholderName"
+            type="text"
+            placeholder="e.g. Jane Appleseed"
+          />
+          <div
+            *ngIf="
+              creditCard['controls']['cardholderName']?.invalid &&
+              creditCard['controls']['cardholderName'].touched
+            "
+          >
+            <p
+              class="error-message"
+              *ngIf="creditCard['controls']['cardholderName'].errors?.['required']"
+            >
+              Can't be blank
+            </p>
+            <p
+              class="error-message"
+              *ngIf="creditCard['controls']['cardholderName'].errors?.['pattern']"
+            >
+              Wrong format, letters only
+            </p>
+          </div>
+        </div>
+        <div class="form-control">
+          <label for="cardNumber">Card Number</label>
+          <input
+            id="cardNumber"
+            formControlName="cardNumber"
+            type="text"
+            placeholder="e.g. 1234 5789 9123 0000"
+          />
+          <div
+            *ngIf="
+              creditCard['controls']['cardNumber']?.invalid &&
+              creditCard['controls']['cardNumber'].touched
+            "
+          >
+            <p
+              class="error-message"
+              *ngIf="creditCard['controls']['cardNumber'].errors?.['required']"
+            >
+              Can't be blank
+            </p>
+            <p
+              class="error-message"
+              *ngIf="creditCard['controls']['cardNumber'].errors?.['pattern']"
+            >
+              Wrong format, numbers only
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-control">
+            <label for="month">Exp. Date (MM/YY)</label>
+            <div class="month-year-container">
+              <input
+                id="month"
+                formControlName="month"
+                type="text"
+                placeholder="MM"
+              />
+              <label for="year"></label>
+              <input
+                id="year"
+                formControlName="year"
+                type="text"
+                placeholder="YY"
+              />
+            </div>
+            <div
+              *ngIf="
+                (creditCard['controls']['month']?.invalid &&
+                  creditCard['controls']['month'].touched) ||
+                (creditCard['controls']['year']?.invalid &&
+                  creditCard['controls']['year'].touched)
+              "
+            >
+              <p
+                class="error-message"
+                *ngIf="creditCard['controls']['month'].errors?.['required'] || creditCard['controls']['year'].errors?.['required']"
+              >
+                Can't be blank
+              </p>
+              <p
+                *ngIf="creditCard['controls']['month'].errors?.['pattern'] ||  creditCard['controls']['year'].errors?.['pattern']"
+                class="error-message"
+              >
+                Wrong format (MM or YY)
+              </p>
+            </div>
+          </div>
+          <div class="form-control">
+            <label for="cvc">cvc</label>
+            <input
+              id="cvc"
+              formControlName="cvc"
+              type="text"
+              placeholder="e.g. 123"
+            />
+            <div
+              *ngIf="
+                creditCard['controls']['cvc']?.invalid &&
+                creditCard['controls']['cvc'].touched
+              "
+            >
+              <p
+                class="error-message"
+                *ngIf="creditCard['controls']['cvc'].errors?.['required']"
+              >
+                Can't be blank
+              </p>
+              <p
+                class="error-message"
+                *ngIf="creditCard['controls']['cvc'].errors?.['pattern']"
+              >
+                Wrong format, 3 numbers only
+              </p>
+            </div>
+          </div>
+        </div>
+        <button class="btn">Confirm</button>
+      </form>
+    </div>
   </section>
 </main>
 <footer>
@@ -25,6 +150,9 @@
     Challenge by
     <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
       >Frontend Mentor</a
-    >. Coded by <a href="https://www.frontendmentor.io/profile/feliceNicolasBarcellona">Felice Nicolas Barcellona</a>.
+    >. Coded by
+    <a href="https://www.frontendmentor.io/profile/feliceNicolasBarcellona"
+      >Felice Nicolas Barcellona</a
+    >.
   </p>
 </footer>
