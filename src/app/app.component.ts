@@ -14,7 +14,7 @@ export class AppComponent {
   constructor(private formBuilder: FormBuilder) {
     this.creditCard = this.formBuilder.group({
       cardholderName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)]],
-      cardNumber: ['', [Validators.required, Validators.pattern(/\b(?:\d{4}[-\s]?){4}\b/)]],
+      cardNumber: ['', [Validators.required, Validators.pattern(/^\d{4}\s\d{4}\s\d{4}\s\d{4}$/)]],
       month: ['', [Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])$/)]],
       year: ['', [Validators.required, Validators.pattern(/^[0-9]{2}$/)]],
       cvc: ['', [Validators.required, Validators.pattern(/^[0-9]{3}$/)]],

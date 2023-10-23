@@ -142,6 +142,12 @@
         </div>
         <button class="btn">Confirm</button>
       </form>
+      <div class="thank-you" *ngIf="submitted">
+        <img src="../assets/icon-complete.svg" alt="icon-complete">
+        <p class="label">thank you!</p>
+        <p>We'we added your card details</p>
+        <button class="confirm" (click)="onContinue()">Continue</button>
+      </div>
     </div>
   </section>
 </main>
