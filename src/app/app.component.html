@@ -3,23 +3,18 @@
     <div class="card-container">
       <div class="card front">
         <img src="assets/card-logo.svg" alt="card-logo" />
-        <p class="card-number" *ngIf="creditCard.value.cardNumber">{{creditCard.value.cardNumber}}</p>
-        <p class="card-number" *ngIf="!creditCard.value.cardNumber">0000 0000 0000 0000</p>
+          <p class="card-number">{{ cardNumber$ | async}}</p>
         <div class="name-exp">
-          <p *ngIf="creditCard.value.cardholderName">{{creditCard.value.cardholderName}}</p>
-          <p *ngIf="!creditCard.value.cardholderName">Jane Appleseed</p>
+          <p>{{ cardholderName$ | async}}</p>
           <div>
-            <span *ngIf="creditCard.value.month">{{creditCard.value.month}}</span>
-            <span *ngIf="!creditCard.value.month">00</span>
+            <span>{{ month$ | async }}</span>
             <span>/</span>
-            <span *ngIf="creditCard.value.year">{{creditCard.value.year}}</span>
-            <span *ngIf="!creditCard.value.year">00</span>
+            <span>{{ year$ | async }}</span>
           </div>
         </div>
       </div>
       <div class="card back">
-        <p class="cvc-number" *ngIf="creditCard.value.cvc">{{ creditCard.value.cvc }}</p>
-        <p class="cvc-number" *ngIf="!creditCard.value.cvc">000</p>
+        <p class="cvc-number">{{ cvc$ | async }}</p>
       </div>
     </div>
     <div class="form-container">
@@ -174,3 +169,4 @@
     >.
   </p>
 </footer>
+
